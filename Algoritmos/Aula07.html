@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display</title>
+</head>
+<body>
+    <h3>Esconde e mostra elementos</h3>
+    <!--display: nome  torna um elemento INVISÍVEL
+        display: block  torna um elemento VISÍSVEL-->
+<br>
+        Há segredos aqui! Cuidado!
+<br><br>
+        <button id="bt_mostrar" onclick="mostrar_segredo()">Ver o segredo</button>
+        <button id="bt_esconder" onclick="esconder_segredo()" style="display: none;">Esconder o segredo</button>
+<br><br>
+        <span id="span_segredo" style="display: none;">Você é senhor do que cala e escravo do que fala!</span>
+</body>
+</html>
+
+<script>
+    // é possível usar o style.qualquer atributo do style (backgroundColor - detalhe)
+    function mostrar_segredo() {
+        span_segredo.style.display = 'block';
+        bt_mostrar.style.display = 'none';
+        bt_esconder.style.display = 'block';
+};
+    function esconder_segredo() {
+        span_segredo.style.display = 'none';
+        bt_mostrar.style.display = 'block';
+        bt_esconder.style.display = 'none';
+};
+</script>

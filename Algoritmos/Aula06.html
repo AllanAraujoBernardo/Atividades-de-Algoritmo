@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculos</title>
+</head>
+<body>
+    <h2>Minha Calculadora Preferida!!!</h2>
+<!-- *  Multiplicação
+     /  Divisão
+     ** Exponenciação
+     -  Subtração
+     +  Soma 
+     **(1/n) Radiciação
+    OBS.. para fazer somas usamos a função Number() para cada um dos valores [para não concatenar]
+-->
+    Entre com o primeiro número:
+    <input id="pri_num" placeholder="Primeiro Número">
+<br>
+    Entre com o segundo número:
+    <input id="seg_num" placeholder="Segundo Número">
+<br>
+    <button onclick="multiplicar()">Multiplicação</button>
+    <button onclick="dividir()">Divisão</button>
+    <button onclick="exponenciar()">Exponenciação</button>
+    <button onclick="radiciar()">Radiciação</button>
+    <button onclick="subtrair()">Subtração</button>
+    <button onclick="somar()">Soma</button>
+<br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function multiplicar(){
+        div_msg.innerHTML += `<br>O resultado da multiplicação é: <b> ${pri_num.value * seg_num.value} </b>`;
+};
+    function dividir(){
+        div_msg.innerHTML += `<br>O resultado da divisão é: <b> ${pri_num.value / seg_num.value} </b>`;
+};
+    function exponenciar(){
+        div_msg.innerHTML += `<br>O resultado da exponenciação é: <b> ${pri_num.value ** seg_num.value} </b>`;
+};
+    function radiciar(){
+        div_msg.innerHTML += `<br>O resultado da radiciação é: <b> ${pri_num.value ** (1/seg_num.value)} </b>`;
+};
+    function subtrair(){
+        div_msg.innerHTML += `<br>O resultado da subtração é: <b> ${pri_num.value - seg_num.value} </b>`;
+};
+    function somar(){
+        var ax_num1 = Number(pri_num.value);
+        var ax_num2 = Number(seg_num.value);
+        div_msg.innerHTML += `<br>O resultado da soma é: <b> ${ax_num1 + ax_num2} </b>`;
+};
+
+/*  Variável é um campo para armazenar temporáriamente 
+    Ex: var nome_aluno = 'Frizza';
+        var ax_salario = 555,22;
+        var ax_ano_nasc = Number(ipt_ano.value);
+
+
+    var ax_num1 = Number(pri_num.value);
+    var ax_num2 = Number(seg_num.value);
+    function somar(){
+        div_msg.innerHTML += `<br>O resultado da soma é: <b> ${ax_num1 + ax_num2}</b>`
+    };
+*/
+
+</script>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usando botões</title>
+</head>
+<body>
+    <h3>Botão clicável</h3>
+<!-- a tag button cria um botão clicável
+o corpo de um botão pode ser personalizado
+(style ou até mesmo img)-->
+    <button onclick="falar_coisas_boas()">Falar coisas boas</button>
+<br><br><br>
+    <button onclick="falar_ladygag()"> <img src="ladygaga.jpg" style="width: 200px;" alt="cantora favorita do Frizza"></button>
+<br><br><br>
+    <button onclick="falar_coisas_boas()" style="color: coral; background-color: chartreuse;">Botão colorido</button>
+<br><br><br>
+
+
+
+<!-- como diferenciar uma tag para ser reconhecida pelo script (damos id para ela)(usamos um id para cara div diferente)-->
+    <div id="div_futebol">O <b id="b_time" style="color: crimson;">Juventos</b> é o melhor time de São paulo</div>
+    <button onclick="frase()">Alterar Frase</button>
+    <button onclick="alt_time()">Alterar Time</button>
+    <button onclick="voltar()">Bkp da frase</button>
+
+    
+</body>
+</html>
+
+<script>
+    function falar_coisas_boas(){
+        alert('Mamãe... Eu sou o Maioral!!!');
+        alert("Fiz meu primeiro JavaScript");
+        alert("Os comandos dentro da função");
+    };
+    function falar_ladygag(){
+        alert("A maior cantora do mundo");
+    };
+    // para alterar o conteúdo de uma tag usamos o id _da_tag.innerHTML = "alteração"(cuidado com a formatação [""])
+        function frase(){
+            div_futebol.innerHTML = 'Futebol <b style="color: white;background-color: black;">não presta!!!</b>';
+    };
+        function alt_time(){
+            b_time.innerHTML = '<b style="color: white;background-color: black;">Corinthians</b>';
+    };
+        function voltar(){
+            div_futebol.innerHTML = 'O <b id="b_time" style="color: crimson;">Juventos</b> é o melhor time de São paulo'
+    };
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input e Concatenação</title>
+</head>
+<body>
+<!-- a tag input cria um campo para entrada de dados (input sempre terá id) (type="text" por padrão)
+     o atributo placeholder cria texto temporário para o campo
+     o atributo autofocus determina onde o cursor estará quando a página carregar -->
+
+    Entre com o seu <b>primeiro nome</b>:
+    <input id="primeiro" type="text" placeholder="primeiro nome">
+<br>
+    Entre com o seu <b>último nome</b>:
+    <input id="ultimo" placeholder="último nome">
+<br>
+    <button onclick="incluir()">Incluir</button>
+    <div id="div_mens">Seu nome é:<br></div>
+
+    
+</body>
+</html>
+
+<script>
+    // para acessar a informação do input usamos id.value
+    
+    /* Concatenação 
+    alert ("seu nome é: " + primeir.value + ' ' + ultimo.value);
+    div_mens.innerHTML += primeiro.value + ' ' + ultimo.value + "<br>";
+    */
+
+    // lembre de limpar o input primeiro.value = ''; ultimo.value = '';
+
+    function incluir(){
+    
+    alert ("seu nome é: " + primeiro.value + ' ' + ultimo.value);
+    //concat
+    div_mens.innerHTML += primeiro.value + ' ' + "<b>" + ultimo.value + "</b> <br>";
+    //interp
+    div_mens.innerHTML += `O primeiro nome é: ${primeiro.value} e o último nome é: <b>${ultimo.value}</b><br>`;
+
+    primeiro.value = '';
+    ultimo.value = '';
+
+    /* Interpolação
+    início e começo com crase ` ` e usamos ${} para a parte dinâmica
+    div_mens.innerHTML += `O primeiro nome é: ${primeiro.value} e o último nome é: <b>${ultimo.value}</b><br>`
+    
+    */
+};
+</script>

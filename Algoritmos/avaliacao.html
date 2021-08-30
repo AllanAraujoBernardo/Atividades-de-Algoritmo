@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de Allan Araújo Bernardo</title>
+</head>
+<body>
+    <img src="https://images.uncyc.org/pt/thumb/e/e9/Penelope.jpg/300px-Penelope.jpg" alt="carro" style="height: 150px;">
+<br>
+    Entre com o preço do carro:
+    <input type="text" id="carro_valor" placeholder="preço do carro">
+<br>
+    Entre com a quantidade de parcelas mensais do valor do carro:
+    <input type="text" id="parc_carro" placeholder="quantidade de parcelas">
+<br><br>
+    <img src="https://s2.glbimg.com/gUNr1DSP4bh8qLJ4LWYNxg0yQzc=/0x0:620x413/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2020/A/V/VfOWLfSwibwMcBb7ZXKw/2018-07-18-kanedabikebrinquedo.jpg" alt="moto" style="height: 150px;">
+<br>
+    Entre com o preço da moto:
+    <input type="text" id="moto_valor" placeholder="preço da moto">
+<br>
+    Entre com a quantidade de parcelas mensais do valor da moto:
+    <input type="text" id="parc_moto" placeholder="quantidade de parcelas">
+<br><br>
+    <button onclick="simular_compra()">Simular a Compra</button>
+<br><br>
+    <div id="div_msg"></div>
+<br>
+    <div id="barra_carro" style="background-color: cornflowerblue; height: 30px; width: 0%;"></div>
+<br>
+    <div id="barra_moto" style="background-color: yellowgreen; height: 30px; width: 0%;"></div>
+</body>
+</html>
+
+<script>
+    function simular_compra(){
+    
+        var ax_total = Number(carro_valor.value) + Number(moto_valor.value)
+        var ax_carro = (carro_valor.value*100)/ax_total
+        var ax_moto = (moto_valor.value*100)/ax_total
+        var ax_parc_carro = carro_valor.value / parc_carro.value
+        var ax_parc_moto = moto_valor.value / parc_moto.value
+        var ax_parc_total = Number(ax_parc_carro) + Number(ax_parc_moto)
+    
+    div_msg.innerHTML = 
+        `<b><u>ANÁLISE DOS VALORES DE COMPRA</u></b><br>
+        O valor <b>total</b> dos veículos é <b>R$ ${ax_total}</b><br>
+        O carro representa <b style="color: cornflowerblue;">${ax_carro}%</b> do valor total dos veículos e a moto <b style="color: yellowgreen;">${ax_moto}%</b>
+        <br><br>
+        <b><u>ANÁLISE DAS PRESTAÇÕES</u></b><br>
+        <img src="https://superaparaescolas.com.br/wp-content/uploads/2014/07/abaco-calculo-mental-agilidade-de-raciocinio.jpg" alt="calculo" style="width: 150px;"><br>
+        O <span style="background-color: cornflowerblue;">carro</span> será pago em <b style="color: cornflowerblue;">${parc_carro.value}</b> meses e cada parcela será de <b style="color: cornflowerblue;">R$ ${ax_parc_carro}</b><br>
+        A <span style="background-color: yellowgreen;">moto</span> será paga em <b style="color: yellowgreen;">${parc_moto.value}</b> meses e cada parcela será de <b style="color: yellowgreen;">R$ ${ax_parc_moto}</b><br>
+        <i>A soma da parcela mensal do carro e da moto é de <b>R$ ${ax_parc_total}</b></i>`
+
+    barra_carro.style.width = `${ax_carro}%`
+
+    barra_moto.style.width = `${ax_moto}%`
+};
+</script>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhando com compras</title>
+</head>
+<body>
+    <div id="campos_produto_a">
+        <h3>Adicione um Produto</h3>
+        Entre com o nome do produto:
+        <input id="nome_produto" type="text" placeholder="nome do produto">
+    <br>
+        Entre com a quantidade de tal produto:
+        <input id="qtd_produto" type="text" placeholder="unidades do produto">
+    <br>
+        Entre com o valor do produto por unidade:
+        <input id="vlr_unidade" type="text" placeholder="valor por unidade">
+    <br>
+        <img onclick="incluir_produto()" src="https://static.vecteezy.com/ti/vetor-gratis/p1/1503505-carrinho-de-compras-simbolo-isolado-cartoon-em-preto-e-branco-gr%C3%A1tis-vetor.jpg" alt="carrinho" style="height: 150px;"> 
+        
+        <span id="des_compra" style="display: none;"> 
+            <button onclick="fin_compra()">Ou Finalizar Compra</button>
+        </span>
+    </div>
+    
+    <div id="lista_produto_b" style="display: none;">
+        <h3>Seu Carrinho</h3>
+        <button onclick="cont_compra()">Compras Mais</button>
+        <button onclick="fin_compra()">Finalizar Compra</button>
+        <span id="span_msg"></span>
+    </div>
+</body>
+</html>
+
+<script>
+    var ctg_produtos = 0;
+    var vlr_total_produtos = 0;
+
+    function incluir_produto(){
+        // para adicionar 1 à variável global de contagem dos produtos ctg_produtos = ctg_proudutos+1 ou ctg_produtos+=1;
+        ctg_produtos = ctg_produtos + 1;
+        vlr_total_produtos = vlr_total_produtos + (qtd_produto.value * vlr_unidade.value);
+    
+        campos_produto_a.style.display = 'none';
+        lista_produto_b.style.display = 'block';
+
+        span_msg.innerHTML += `<br>O orçamento da quantidade ${qtd_produto.value} do produto ${nome_produto.value} é de R$ ${qtd_produto.value * vlr_unidade.value}.`;
+
+        nome_produto.value = '';
+        qtd_produto.value = '';
+        vlr_unidade.value = '';
+};
+    function cont_compra(){
+        lista_produto_b.style.display = 'none';
+        campos_produto_a.style.display = 'block';
+        des_compra.style.display = 'block';
+};
+    function fin_compra(){
+        alert (`A quantidade de itens orçados foi de ${ctg_produtos} e a soma desses orçamentos foi de R$ ${vlr_total_produtos}`);
+
+        span_msg.innerHTML = '';
+        
+        lista_produto_b.style.display = 'none';
+        campos_produto_a.style.display = 'block';
+        des_compra.style.display = 'none';
+
+        nome_produto.value = '';
+        qtd_produto.value = '';
+        vlr_unidade.value = '';
+
+        ctg_produtos = 0;
+        vlr_total_produtos = 0;
+};
+</script>

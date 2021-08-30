@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixas</title>
+</head>
+<body>
+    <h3>Caixas e suas larguras</h3>
+
+    <div>Primeira caixa sem usar o atributo style</div>
+
+    <div style="background-color: royalblue;">Segunda caixa - somente colorida</div>
+
+    <div style="background-color: seagreen; width: 40%;"> Terceira caixa com largura proporcional, somente 40% da largura</div>
+
+    <div style="background-color: skyblue; width: 300px;"> Quarta caixinha com largura fixa de 300 pixels</div>
+
+    <h3>Caixa e suas Alturas</h3>
+
+    <div style="background-color: tomato; height: 3mm;"></div>
+
+    <div style="background-color: violet; height: 50px;"></div>
+
+    <h3>Utilizando a propriedade Float</h3>
+
+    <div style="background-color: chartreuse; float: left; width: 30%;">caixa da esquerda com 30%</div>
+    <div style="background-color: crimson; float: left; width: 20%;">caixa da direita com 20%</div>
+<br><br><br>
+    <h3>UTILIZANDO IMAGENS</h3>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg/305px-The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg" alt="sol">
+<br><br><br>
+
+    <button onclick="pri_alerta()">Primeiro Alerta</button>
+</body>
+</html>
+
+<!-- a tag div define uma CAIXA
+
+definindo a largura de uma div com width
+ao ultrapassar o limite.. é gerada uma nova linha
+
+definindo a altura de uma div com height
+
+para colocar divs uma ao lado da outra usamos o float
+______________________________________________________________
+
+para adicionar uma imagem é preciso que ela esteja na sua máquina ou seja um link.
+
+utilizamos a tag img e pode precisar do atributo src (endereço da imagem)
+não é necessário utilizar o src quando a imagem se encontra na mesma pasta do html
+
+utilizamos o atributo alt para exibir um texto alternativo caso a imagem não seja resolvida ou para ser utilizado por alguns softwares especiais para deficientes visuais
+
+podemos utilizar o atributo style para determinar o width(largura) ou o height(altura) (altere apenas um deles para não distorcer a imagem)
+
+    <img src="endereço da internet"
+    <img src="nome do arquivo na mesma pasta"
+-->
+
+<script> // script é usado após o fim da tag </html>
+
+    // para comentar 1 linha
+
+    /*
+    para comentar um bloco de comentário
+    lembre de não colocar tags HTML dentro de <script>
+    */
+
+    alert("Esta é uma mensagem solta do script");
+
+    alert("Segunda mensagem!!!");
+
+    /* alert é um comando que funciona dentro da tag <scrit>
+        e serve para abrir um pop-up */
+</script>

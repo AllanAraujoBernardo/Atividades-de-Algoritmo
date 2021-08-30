@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionando coisas na div</title>
+</head>
+<body>
+    <button onclick="frutas()">Frutas</button>
+    <button onclick="legumes()">Legumes</button>
+    <button onclick="carnes()">Carnes</button>
+    <button onclick="guloseimas()">Guloseimas</button>
+<br><br>
+    <button onclick="limpar()">Lipar a Lista</button>
+    
+    <div id="div_lista">
+        <h3>Lista de Compras</h3>
+    </div>
+
+</body>
+</html>
+
+<script>
+    function frutas(){
+        div_lista.innerHTML += '* Frutas <br>';
+};
+    function legumes(){
+        div_lista.innerHTML += '* Legumes <br>';
+};
+    function carnes(){
+        div_lista.innerHTML += '* Carnes <br>';
+};
+    function guloseimas(){
+        div_lista.innerHTML += '* Guloseimas <br>';
+};
+    function limpar(){
+        div_lista.innerHTML = '';
+};
+</script>

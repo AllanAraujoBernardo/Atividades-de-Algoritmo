@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade de Algorítimos</title>
+</head>
+<body> <!-- Exercício 1 -->
+    <h3>Reprodução do Html</h3>
+        <p>Ouviram do <b style="color: green;"> Ipiranga</b> as <u> margens <span style="color: blue ;">plácidas</span></u> <br>
+        De um <span style="color: blue ;">povo</span> <span style="color:red ;">heróico</span> o <b><i>brado</i> retumbante!</b></p>
+
+        <p><span style="color: blue ;">E o sol da <b>Liberdade</b>, em raios <i style="color: orangered ;">fúlgidos</i>,</span> <br>
+            <span style="color: purple ;">Brilhou</span> no céu da <b><u>Pátria</u></b> nesse instante.</p>
+</body>
+<br><br><br>
+<body> <!-- Exercício 2 -->
+    <h3>Bandeira da Holanda</h3>
+    <div style="background-color: red; height: 60px; width: 270px;"></div>
+    <div style="background-color: white; height: 60px; width: 270px"></div>
+    <div style="background-color: blue; height: 60px; width: 270px"></div>
+</body>
+<br><br><br>
+<body> <!-- Exercício 3 -->
+    <h3>Bandeira da França</h3>
+    <div style="background-color: blue; height: 180px; width: 90px; float: left;"></div>
+    <div style="background-color: white; height: 180px; width: 90px; float: left;"></div>
+    <div style="background-color: red; height: 180px; width: 90px; float: left;"></div>
+</body>
+<br><br><br><br><br><br><br><br><br>
+<body> <!-- Exercício 4 -->
+    <h3>Exibição de 3 heróis</h3>
+</body>
+<br><br><br>
+<body> <!-- Exercício 5 -->
+    <h3>Bandeira da Argentina</h3>
+</body>
+<br><br><br>
+<body> <!-- Exercício 6 -->
+    <h3>Lady Gaga</h3>
+    <div>
+        <img src="ladygaga.jpg" alt="Lady Gaga" style="height: 60px; float: left;">    
+        <b style="color: orangered;font-size: 25px;">Shallow (feat.BradleyCooper)</b><br>
+        <b style="color:darkgoldenrod; font-size: 20px;">Lady Gaga</b>
+    </div>
+<br><br>
+    <div style="margin-left: 100px; font-size: 20px;">
+        Tell me something, <b style="color: purple;">girl</b><br>
+        Are you happy in this <u style="color: green;">modern world?</u><br>
+        Or do you need more?<br>
+        Is there <i style="color: blue;">something else</i> you're searching for?
+    </div>
+</body>
+<br><br><br>
+
+<br><br><br>
+<body>
+<!-- Exercício 11/12 -->
+    <h1>Brasil x Alemanha</h1>
+    <button onclick="br_gol()">Gol do Brasil</button>
+    <button onclick="alem_gol()">Gol da Alemanha</button><br>
+    <div id="div_lista"><b>Tempo real do jogo</b>:<br></div>
+</body>
+<br><br><br>
+
+<br><br><br>
+<body>
+<!-- Exercício 17 -->
+    <h1 style="text-align: center;">A História de uma pizza</h1>
+    <div style="text-align: center;">
+        <button onclick="pizza_1()">Acabou de Chegar</button>
+        <button onclick="pizza_2()">Depois de 1 minuto</button>
+        <button onclick="pizza_3()">depois de 5 minutos</button>
+        <button onclick="pizza_4()">Depois de 15 minutos</button>
+    </div>
+    <div id="sit_pizza" style="text-align: center;"></div>
+</body>
+<br><br><br>
+<br><br><br>
+<body> <!-- Exercício 18 (desafio) -->
+    <h1>Desafio</h1>
+    <div>
+        <img src="181sao_paulo.jpg" alt="São Paulo" style="float: left;" onclick="tacas_sp()">
+        <img src="182palmeiras.jpg" alt="Palmeiras" style="float: left;" onclick="tacas_pal()">
+        <img src="183corinthians.jpg" alt="Conrinthians" style="float: left;" onclick="tacas_cor()">
+        <img src="184santos.jpg" alt="Santos" style="float: left;" onclick="tacas_san()">
+    </div><br><br><br><br><br><br><br><br><br><br>
+    <div id="div_tacas"></div>
+</body>
+</html>
+
+<script> // exercício 11/12
+    function br_gol(){
+        div_lista.innerHTML += ' <span style="color: green;">É goooolll do Brasil!!!</span> <br>'
+};
+    function alem_gol(){
+        div_lista.innerHTML += ' <span style="color: yellow; background-color: darkred;">É goooolll da Alemanha!!!</span> <br>'
+};
+</script>
+<script> // exercício 17
+    function pizza_1(){
+        sit_pizza.innerHTML = '<img src="pizza1.jpg" style="width: 200px;">';
+};
+    function pizza_2(){
+        sit_pizza.innerHTML = '<img src="pizza2.jpg" style="width: 200px;">';
+};
+    function pizza_3(){
+        sit_pizza.innerHTML = '<img src="pizza3.jpg" style="width: 200px;">';
+};
+    function pizza_4(){
+        sit_pizza.innerHTML = '<img src="pizza4.jpg" style="width: 200px;">';
+};
+</script>
+<script> // exercício 18 (desafio)
+    function tacas_sp(){
+        div_tacas.innerHTML = '<img src="taca1.jfif" style="height: 100px;"><img src="taca1.jfif" style="height: 100px;"><img src="taca1.jfif" style="height: 100px;">'
+};
+    function tacas_sp(){
+        div_tacas.innerHTML = '<img src="taca1.jfif" style="height: 100px;"><img src="taca1.jfif" style="height: 100px;"><img src="taca1.jfif" style="height: 100px;">'
+};
+    function tacas_sp(){
+        div_tacas.innerHTML = '<img src="taca1.jfif" style="height: 100px;"><img src="taca1.jfif" style="height: 100px;"><img src="taca1.jfif" style="height: 100px;">'
+};
+    function tacas_sp(){
+        div_tacas.innerHTML = '<img src="taca1.jfif" style="height: 100px;"><img src="taca1.jfif" style="height: 100px;"><img src="taca1.jfif" style="height: 100px;">'
+};
+
+</script>

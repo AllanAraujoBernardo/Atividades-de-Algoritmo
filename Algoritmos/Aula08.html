@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar SRC de imagem</title>
+</head>
+<body>
+    <!-- além de podermos utilizar o display para mostrar ou esconder uma imagem.. tbm podemos alterar o src dela 
+    id da imagem .src -->
+    <button onclick="nublado()">Mudar para Nublado</button>
+    <button onclick="ensolarado()">Mudar para Ensolarado</button>
+<br><br>
+    <img id="clima" src="" style="height: 300px;">
+</body>
+</html>
+    <script>
+        function nublado(){
+            clima.src = 'https://imagens.ne10.uol.com.br/img/imagens/2020/01/22/ff12b3d2e4_design-sem-nome-9.jpg'
+};
+        function ensolarado(){
+            clima.src = 'https://i.pinimg.com/originals/d0/97/2b/d0972b0134042754715af5d36c4948b7.jpg'
+};
+    </script>
