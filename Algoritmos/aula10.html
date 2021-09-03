@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select/Options e Resto da Divisão</title>
+</head>
+<body>
+    <!--A tag <select> plota uma "combo box/lista suspensa"
+     o valor do id da select é = value = valor por trás de cada opção
+    
+    ONCHANGE chama uma função quando você efetura uma mudança-->
+     <select id="sel_estudar" onchange="mostrar()"> 
+        <option value="">Selecione a Matéria...</option>
+        <option value="HTML">Algoritmos</option>
+        <option value="Criação de Tabelas">Banco de Dados</option>
+        <option value="free">TI</option>
+        <option value="1Binário, 2Arduino">Arquitetura Computacional</option>
+    </select>
+    <button onclick="mostrar()">Mostrar</button>
+<br><br><br><br>
+    <input type="text" id="n1" placeholder="primeiro número">
+<br>
+    <input type="text" id="n2" placeholder="segundo número">
+<br>
+    <button onclick="rest_div()">Resto da divisão</button>
+<br>
+    <div id="div_rest"></div>
+</body>
+</html>
+
+<script>
+    function mostrar(){
+        alert(`Você tem que estudar: ${sel_estudar.value}`)
+    };
+
+    function rest_div(){
+        div_rest.innerHTML = `${n1.value % n2.value}`
+        //usamos % para achar o resto de uma divisão
+    };
+</script>
