@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If</title>
+</head>
+<body>
+    <!-- If faz uma comparação.. usamos if (comparação) {comandos quando verdadeiro} 
+    < maior
+    > menor
+    >= maior ou igual
+    <= menor ou igual
+    == igual
+    != diferente -->
+    Entre com a quantidade de pontos na CNH
+    <input type="text" id="qtde_pontos" placeholder="quantidade de pontos">
+<br>
+    <button onclick="validar()">Verificar</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function validar() {
+        var multa = qtde_pontos.value * 78;
+
+        if (qtde_pontos.value > 20) {
+            alert('Você está com a CNH suspensa');
+        }
+
+        div_msg.innerHTML = `O valor total das multas é R$ ${multa.toFixed(2)}`
+    };
+</script>
