@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão 01</title>
+</head>
+<body>
+    <h3>"Boletim Escolar"</h3>
+    Entre com o seu nome
+    <input type="text" id="nome" placeholder="nome do aluno">
+<br>
+    Entre com sua primeira nota
+    <input type="text" id="nota1" placeholder="primeira nota">
+<br>
+    Entre com sua segunda nota
+    <input type="text" id="nota2" placeholder="segunda nota">
+<br>
+    Entre com sua terceira nota
+    <input type="text" id="nota3" placeholder="terceira nota">
+<br><br>
+    <button onclick="funfar()">Alertar</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function funfar(){
+        var ax_soma = Number(nota1.value) + Number(nota2.value) + Number(nota3.value);
+        var ax_media = ax_soma / 3;
+
+        div_msg.innerHTML = `O aluno ${nome.value} obteve média de ${ax_media.toFixed(2)} onde a soma de suas notas foi ${ax_soma}`;
+
+        if (ax_media >= 6 ){
+            alert(`APROVADO`)
+        };
+    };
+</script>
