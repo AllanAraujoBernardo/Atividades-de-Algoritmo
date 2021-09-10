@@ -25,10 +25,13 @@
 
 <script>
     function validar() {
-        var multa = qtde_pontos.value * 78;
+        var multa = 0; 
 
-        if (qtde_pontos.value > 20) {
+        if (qtde_pontos.value >= 20) {
             alert('Você está com a CNH suspensa');
+            multa = qtde_pontos.value * 87;
+        } else {
+            multa = qtde_pontos.value * 78;
         }
 
         div_msg.innerHTML = `O valor total das multas é R$ ${multa.toFixed(2)}`
