@@ -1,0 +1,72 @@
+/* body {
+    background-color: lightpink;
+}
+
+h1 {
+    color: green;
+}
+
+p {
+    color: red;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.destaque {
+    color: springgreen;
+}
+
+#titulo {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: darkolivegreen;
+} */
+
+/* podemos colocar o !important após o atributo para tornar ele mais prioritário  */
+
+#div1 {
+    width: 50%;
+    background-color: rgb(177, 175, 175);
+    height: 200px;
+}
+
+#div2 {
+    background-color: rgb(230, 197, 15);
+    height: 200px;
+    width: 80%;
+}
+
+#div8{
+    background-color: red;
+    height: 100%;
+    width: 100%;
+}
+#div9{
+    background-color: orange;
+    height: 90%;
+    width: 90%;
+}
+#div3{
+    background-color: yellow;
+    height: 80%;
+    width: 80%;
+}
+#div4{
+    background-color: green;
+    height: 70%;
+    width: 70%;
+}
+#div5{
+    background-color: aqua;
+    height: 60%;
+    width: 60%;
+}
+#div6{
+    background-color: blue;
+    height: 50%;
+    width: 50%;
+}
+#div7{
+    background-color: purple;
+    height: 40%;
+    width: 40%;
+}

@@ -28,7 +28,7 @@
     var total = 0;
     var depre = preco.value * 0.8;
     
-    for (let index = 0; index <= parcelas.value ; index++) {
+    for (let index = 1; index <= parcelas.value ; index++) {
         total += (preco.value/parcelas.value) * (Number(1) + Number(juros.value/100)) ** (index-1);
     };
 
