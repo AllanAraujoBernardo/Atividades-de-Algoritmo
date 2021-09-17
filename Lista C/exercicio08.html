@@ -24,12 +24,14 @@
 </html>
 
 <script>
-    function preju(){
-    var termo = parcelas.value
-    var total = (preco.value/parcelas.value) * (Number(1) + Number(juros.value/100)) ** (parcelas.value-1);
+    function preju(){ 
+    var t1 = preco.value/parcelas.value;
+    var razao = Number(1) + Number(juros.value/100);
+
+    var total = (t1 * (razao ** parcelas.value - 1)) / (razao - 1);
     var depre = preco.value * 0.8;
     var carros = total/preco.value;
-    //t1.value * razao.value ** (termo.value - 1)
+    //t1.value * razao.value ** (parcelas.value - 1)
 
     div_msg.innerHTML = `Seu carro vai sair por um total de <b>R$ ${total.toFixed(2)}</b>. Após 1 mês, ele já vai valer só <b>R$ ${depre.toFixed(2)}</b>. Porque comprou financiado, vai pagar o correspondente a <b>${carros.toFixed(1)}</b> carros.`
     };
