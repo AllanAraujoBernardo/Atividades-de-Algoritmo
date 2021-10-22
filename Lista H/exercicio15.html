@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 15</title>
+</head>
+<body>
+    <h3>Elefantes incomodados em participar desse exercício</h3>
+    Entre com a quantidade de elefantes
+    <input type="number" id="elefantes" placeholder="limite de elefantes">
+<br><br>
+    <button onclick="cantar()">Atazanar a Médium</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function cantar() {
+        var ax_contagem = 1;
+        div_msg.innerHTML = '';
+        var ax_incomodam = 'incomodam,'
+
+        while (ax_contagem < elefantes.value) {
+            ax_contagem++;
+            ax_incomodam = ax_incomodam + ' incomodam,'
+            div_msg.innerHTML += `<i>1 elefante incomoda muita gente! <br><br> ${ax_contagem} elefantes ${ax_incomodam} muito mais!</i><br><br>`
+        }
+    }
+</script>

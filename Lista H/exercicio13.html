@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 13</title>
+</head>
+<body>
+    <h3>Rotina Musculosa</h3>
+    De quantos em quantos dias você faz musculação?
+    <input type="number" id="dias" placeholder="intervalo em dias">
+<br><br>
+    <button onclick="contar()">Exibir rotina mensal</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function contar(){
+        var ax_contagem = 1;
+        div_msg.innerHTML = '';
+
+        while (ax_contagem <= 30) {
+            if ((ax_contagem - 1) % dias.value == 0 || ax_contagem == 1) {
+                div_msg.innerHTML += `Dia ${ax_contagem} - <b>Musculação</b><br><br>`;
+            // } else if ((ax_contagem + 1) % dias.value != 0 && ax_contagem != 1) {
+                } else {
+                div_msg.innerHTML += `Dia ${ax_contagem} - Comer, dormir etc<br><br>`
+            }
+
+            ax_contagem++;
+        }
+    }
+</script>

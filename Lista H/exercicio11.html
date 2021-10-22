@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 11</title>
+</head>
+<body>
+    Entre com a quantidadE de voltas para finalizar a corrida
+    <input type="number" id="voltas" placeholder="Número de Voltas">
+<br><br>
+    <button onclick="contar()">Iniciar corrida</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function contar() {
+        var ax_contagem = 1;
+        div_msg.innerHTML = '';
+
+        while (ax_contagem <= voltas.value) {
+            div_msg.innerHTML += `<b>Carro dando a ${ax_contagem}ª volta</b><br><br>`
+            ax_contagem++;
+        }
+
+        div_msg.innerHTML += `<b>Corrida Finalizada!</b>`
+    }
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 07</title>
+</head>
+<body>
+    <h3>Múltiplos de 5</h3>
+    Entre com um número entre 20 e 100
+    <input type="number" id="numero" placeholder="número escolhido">
+<br><br>
+    <button onclick="validar()">Adoro múltiplos de 5</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function validar() {
+        if (numero.value < 20 || numero.value > 100) {
+            alert('Número inválido')
+        } else {
+            contar()
+        }
+    }
+
+    function contar() {
+        var ax_contagem = 1;
+        div_msg.innerHTML = '';
+
+        while (ax_contagem <= numero.value) {
+
+            if (ax_contagem % 5 == 0) {
+                div_msg.innerHTML += `${ax_contagem}<br>`
+            };
+
+            ax_contagem ++;
+        }
+    }
+</script>

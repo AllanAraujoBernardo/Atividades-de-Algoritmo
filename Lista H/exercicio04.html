@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 04</title>
+</head>
+<body>
+    <button onclick="contar()">S2 Pares</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function contar() {
+        var ax_contagem = 1;
+        div_msg.innerHTML = '';
+
+        while (ax_contagem <= 100) {
+                if (ax_contagem % 2 == 0){
+                    div_msg.innerHTML += `${ax_contagem}<br>`;
+            }
+            ax_contagem++;
+        }
+    }
+</script>

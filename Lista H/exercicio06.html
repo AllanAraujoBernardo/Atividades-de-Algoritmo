@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 06</title>
+</head>
+<body>
+    <h3>Amor</h3>
+    Entre com o nome da pessoa amada
+    <input type="text" id="nome" placeholder="Nome">
+<br><br>
+    Entre com o valor do seu amor por essa pessoa
+    <input type="number" id="valor" placeholder="Valor">
+<br><br>
+    <button onclick="contar()">Expressar amor</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function contar(){
+        var ax_contagem = 1;
+        div_msg.innerHTML = '';
+        
+        while (ax_contagem <= valor.value) {
+            div_msg.innerHTML += `<b>${nome.value}</b>, eu te amo! <i>Sempre lembre disso!</i><br><br>`;
+            ax_contagem++;
+        }
+    }
+</script>
