@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação Continuada 2</title>
+</head>
+<body>
+    <h1>SDA - AS MELHORES CAMISETAS DO BRASIL</h1>
+    Entre com a quantidade de camisetas solicitadas
+    <input type="text" id="ipt_qtd_camisetas" placeholder="Quantidade de Camisetas">
+<br><br>
+    <select id="tamanho">
+        <option value="">Selecione o tamanho das das camisetas</option>
+        <option value="Pequeno">Pequena</option>
+        <option value="Grande">Grande</option>
+    </select>
+<br><br>
+    <select id="produto">
+        <option value="">Selecione o Produto</option>
+        <option value="Colorida">Camiseta Colorida</option>
+        <option value="Branca">Camiseta Branca</option>
+    </select>
+<br><br>
+    Entre com a distância de entrega
+    <input type="text" id="ipt_dist_entrega" placeholder="Distância de Entrega">
+<br><br>
+    <button id="bt_orcar" onclick="validar()">Orçar</button>
+<br><br>
+    <div id="div_msg"></div>
+<br><br>
+    <div id="div_msg_entrega"></div>
+<br><br>
+    <div id="bts_tela_orcamento" style="display: none;">
+        <button onclick="voltar()">Novo Orçamento</button>
+        <button onclick="efetuar_compra()">Comprar</button>
+    </div>
+</body>
+</html>
+
+<script>
+    var ax_escolhida = 0;
+    
+    function validar(){
+        var ax_branca_pequeno = 15 * ipt_qtd_camisetas.value;
+        var ax_branca_grande = 16 * ipt_qtd_camisetas.value;
+        var ax_colorida_pequeno = 17 * ipt_qtd_camisetas.value;
+        var ax_colorida_grande = 18 * ipt_qtd_camisetas.value;
+
+        if (ipt_qtd_camisetas.value < 100) {
+            alert('Vendemos somento no atacado.');
+        } else if (ipt_qtd_camisetas.value > 2000) {
+            alert('Consulte nosso PCP (planejamento de controle de produção)');
+        } else if (ipt_dist_entrega.value <= 0) {
+            alert('Informar a distância de entrega');
+        } else if (tamanho.value == '') {
+            alert('Informe o tamanho da camiseta');
+        } else if (produto.value == '') {
+            alert('Informe o produto');
+        } else {
+            bt_orcar.style.display = 'none';
+
+                if (produto.value == 'Branca' && tamanho.value == 'Pequeno') {
+                    ax_escolhida = ax_branca_pequeno;
+                } else if (produto.value == 'Branca' && tamanho.value == 'Grande') {
+                    ax_escolhida = ax_branca_grande;
+                } else if (produto.value == 'Colorida' && tamanho.value == 'Pequeno') {
+                    ax_escolhida = ax_colorida_pequeno;
+                } else if (produto.value == 'Colorida' && tamanho.value == 'Grande') {
+                    ax_escolhida = ax_colorida_grande;
+                }
+
+            div_msg.innerHTML = `<b>Orçamento de vendas</b><br><br><br>Quantidade Solicitada: ${ipt_qtd_camisetas.value}<br><br>Produto Selecionado: Camiseta ${produto.value}<br><br>Tamanho Selecionado: ${tamanho.value}<br><br><br>O valor total das mercadorias é de R$ ${ax_escolhida.toFixed(2)}`;
+
+                if (ipt_dist_entrega.value > 67) {
+                    div_msg_entrega.innerHTML = `Para essa distância será cobrado um adicional de R$ ${(ax_escolhida*0.07).toFixed(2)} para entrega`
+                }
+
+            bts_tela_orcamento.style.display = 'block';
+
+        }
+    };
+
+    function voltar (){
+        ipt_qtd_camisetas.value = '';
+        tamanho.value = '';
+        produto.value = '';
+        ipt_dist_entrega.value = '';
+        div_msg.innerHTML = '';
+        div_msg_entrega.innerHTML = '';
+        bt_orcar.style.display = 'block';
+        bts_tela_orcamento.style.display = 'none';
+        ax_escolhida = 0;
+    };
+
+    function efetuar_compra(){
+        var ax_random = (Math.random()*2) + Number(2.5);
+        var ax_desconto = ax_escolhida * (ax_random/100);
+        
+        alert(`PARABÉNS!!! Você recebeu um bônus de ${ax_random.toFixed(1)}%, na sua próxima compra você terá um bônus de R$ ${ax_desconto.toFixed(2)}`);
+        
+        voltar()
+    };
+
+</script>

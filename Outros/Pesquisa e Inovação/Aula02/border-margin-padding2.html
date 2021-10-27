@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Border, Margin & Padding</title>
+
+    <style>
+        /* 
+            
+            As 'bordas', ficam na extremidade do elemento, onde ele "termina", delimitando o elemento.
+
+            As bordas são aplicadas com a propriedade 'border', que recebe três valores, sendo eles:
+                ° border-style: X;   -> estilo da borda, que pode ser sólida, tracejada (dashed), pontilhada (dotted), etc;
+                ° border-color: Y;   -> cor da borda, que pode ser um nome, RGB ou #hexadecimal;
+                ° border-width: Z;   -> largura da borda, em pixels, viewport (vw/vh) ou porcentagem (%);
+
+            Ao utilizar o 'border', aplicamos essas três propriedades de uma só vez, invés de termos que declarar
+            cada propriedade separadamente. Exemplo de regra CSS:
+
+                border:      5px      solid     black;    -> aplicando uma borda preta, sólida/contínua com largura de 5 pixels
+                
+                seletor  | largura |  estilo  |  cor
+
+        */
+        
+        /* tag */
+        body {
+            background-color: #00ffff;
+            border: 10px dotted #770077;
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #ff008c;
+        }
+
+        /* tag */
+        div {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* classe */
+        .container {
+            background-color: #ffffff;
+            border: 1px solid #000000;
+        }
+
+        /* classe */
+        .coloracao1 {
+            background-color: rgb(255, 0, 0);
+            border: 10px solid rgb(255, 255, 0);
+        }
+        
+        /* classe */
+        .coloracao2 {
+            background-color: rgb(2, 97, 2);
+            border: 10px dashed rgb(235, 50, 81);
+        }
+
+        /* classe */
+        .coloracao3 {
+            background-color: rgb(56, 56, 253);
+            border: 10px double rgb(255, 140, 0);
+        }
+
+
+/* 
+    margin & padding 
+
+    Ao aplicar 'margin: XX;', é adicionada uma MARGEM EXTERNA no elemento, a partir da extremidade do elemento, 
+    até o seu ELEMENTO PAI, ou seja, a margem externa vai do "limite" ou BORDA do elemento, até o elemento que
+    o engloba/contém.
+
+        margin: 50px;
+        margin: 50%;
+        margin: 50vw;
+        margin: 25vh;
+        
+
+    Ao aplicar 'padding: XX;', é adicionada uma MARGEM INTERNA no elemento, a partir da extremidade do elemento, 
+    até o seu CONTEÚDO, ou seja, a margem interna vai do "limite" ou BORDA do elemento, até o que contém.
+    
+        padding: 50%;
+        padding: 50vh;
+        padding: 25px;
+        padding: 25vw;
+
+
+    XX - seu valor pode ser em pixels, % ou viewport (vw/vh);
+         50px     50%      50vw
+
+    Lembrando que VIEWPORT (janela de exibição) se baseia no tamanho da janela de exibição DO SEU NAVEGADOR, 
+    e a PORCENTAGEM (%) se baseia no tamanho do ELEMENTO PAI (a tag que está englobando/contendo o elemento a 
+    ser estilizado)
+
+
+    Também podemos aplicar as margens internas e externas para alguma lateral específica do elemento, com os 
+    parâmetros 'left, right, top, bottom'.
+    
+        margin-top: 50px;
+        margin-right: 50%;
+        margin-bottom: 50vw;
+        margin-left: 25vh;
+        
+        padding-top: 50%;
+        padding-right: 50vh;
+        padding-bottom: 25px;
+        padding-left: 25vw;
+
+*/
+
+        .margem-externa {
+            margin: 50px;
+        }
+
+        .margem-interna {
+            padding: 50px;
+        }
+
+        /* classe */
+        .margem-interna-top-left {
+            padding-top: 50px;
+            padding-left: 50px;
+        }   
+
+        /* classe */
+        .margem-externa-top-left {
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+        
+    </style>
+
+</head>
+<body>
+    
+    <!-- div com coloração 1 -->
+    <div class="coloracao1">   
+        <!-- div aplicando estilização padrão da classe container  para visualizarmos o conteúdo-->
+        <div class="container"> Div 01 </div>
+    </div>
+    
+    <!-- div com coloração 2 -->
+    <div class="coloracao2">
+        <!-- div aplicando estilização padrão da classe container para visualizarmos o conteúdo-->
+        <div class="container"> Div 02 </div>
+    </div>
+    
+    <!-- div com coloração 3 -->
+    <div class="coloracao3">
+        <!-- div aplicando estilização padrão da classe container para visualizarmos o conteúdo-->
+        <div class="container"> Div 03 </div>
+    </div>
+    
+
+
+    <!-- aplicando margem externa -->
+    <div class="coloracao3 margem-externa">   
+        <div class="container"> Div 04 </div>
+    </div>
+    
+    <!-- aplicando margem interna -->
+    <div class="coloracao1 margem-interna">
+        <div class="container"> Div 05 </div>
+    </div>
+
+
+
+    <!-- aplicando margem externa com direção especificada -->
+    <div class="coloracao1 margem-externa-top-left">   
+        <div class="container"> Div 06 </div>
+    </div>
+    
+    <!-- aplicando margem interna com direção especificada -->
+    <div class="coloracao2 margem-interna-top-left">
+        <div class="container"> Div 07 </div>
+    </div>
+    
+    <!-- aplicando margem interna e externa com direção especificada -->
+    <div class="coloracao3 margem-interna-top-left margem-externa-top-left">
+        <div class="container"> Div 08 </div>
+    </div>
+
+</body>
+</html>

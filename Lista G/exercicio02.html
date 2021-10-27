@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 02</title>
+</head>
+<body>
+    <h3>Sorteador de time</h3>
+    <button onclick="sortear()">Sortear time</button>
+<br><br>
+    <img id="foto" src="" style="height: 150px;">
+</body>
+</html>
+
+<script>
+    function sortear() {
+        var ax_num = Math.random();
+        var ax_intervalo = (ax_num*3)+1;
+
+        if (ax_intervalo.toFixed() == 1){
+            foto.src = 'https://s1.static.brasilescola.uol.com.br/be/e/palmeiras(1).jpg';
+        } else if (ax_intervalo.toFixed() == 2){
+            foto.src = 'https://i.pinimg.com/236x/d4/aa/cd/d4aacd32d937f8acd8b8c267f29fca2e.jpg';
+        } else if (ax_intervalo.toFixed() == 3){
+            foto.src = 'https://www.criandologo.com.br/wp-content/uploads/2017/01/criar-logomarca-saopaulo-300x279.png';
+        } else if (ax_intervalo.toFixed() == 4){
+            foto.src = 'https://i.pinimg.com/474x/a1/ba/9a/a1ba9ac90fa47519d69fe38cfa6662b6.jpg     ';
+        }
+    }
+</script>

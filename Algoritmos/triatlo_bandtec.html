@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triatlo Bandtec</title>
+</head>
+<body>
+    <h1>Triatlo Bandtec</h1>
+    Entre com o nome do atleta
+    <input type="text" id="ipt_nome" placeholder="Nome">
+<br><br>
+    Entre com a idade do atleta
+    <input type="text" id="ipt_idade" placeholder="Idade">
+<br><br>
+    <select id="sel_modalidade">
+        <option value="">Selecione a modalidade praticada</option>
+        <option id="opt_correr" value="Correr">Correr</option>
+        <option id="opt_nadar" value="Nadar">Nadar</option>
+        <option id="opt_pedalar" value="Pedalar">Pedalar</option>
+    </select>
+<br><br>
+    <button onclick="validar()">Praticar Esporte</button>
+<br><br>
+    <div id="div_placar"></div>
+<br><br>
+    <div id="div_imagens" style="display: flex;">
+        <img id="foto_correr" src="triatlo_correr.png" style="width: 0px; margin: 0 30px;">
+        <img id="foto_nadar" src="triatlo_nadar.png" style="width: 0px; margin: 0 30px;">
+        <img id="foto_pedalar" src="triatlo_pedalar.png" style="width: 0px; margin: 0 30px;">
+    </div>
+</body>
+</html>
+
+<script>
+    var ax_randon_dist = 0;
+    var ax_correr = 0;
+    var ax_nadar = 0;
+    var ax_pedalar = 0;
+
+    function validar(){
+        if (ipt_nome.value.length < 3) {
+            alert('O não deve possuir pelo menos 3 letras');
+        } else if (ipt_idade.value < 18 || ipt_idade.value > 80) {
+            alert('A idade precisa estar entre 18 e 80');
+        } else if (sel_modalidade.value == '') {
+            alert('Selecione uma modalidade');
+        } else {
+            atualizar()
+        }
+    };
+    
+    function atualizar(){
+        ax_randon_dist = (Math.random()*2);
+        
+        if (sel_modalidade.value == 'Correr') {
+            ax_correr = ax_correr + ax_randon_dist;
+        } else if (sel_modalidade.value == 'Nadar') {
+            ax_nadar = ax_nadar + ax_randon_dist;
+        } else if (sel_modalidade.value == 'Pedalar') {
+            ax_pedalar = ax_pedalar + ax_randon_dist;
+        }
+
+        var ax_soma = (ax_correr + ax_nadar + ax_pedalar);       
+        
+        div_placar.innerHTML = `Atleta: <b>${ipt_nome.value}</b> - Idade <b>${ipt_idade.value}</b> anos<br><br>
+        Km correndo: <b>${ax_correr.toFixed(1)}</b> (<b>${(ax_correr/ax_soma*100).toFixed(2)}</b>%)<br>
+        Km nadando: <b>${ax_nadar.toFixed(1)}</b> (<b>${(ax_nadar/ax_soma*100).toFixed(2)}</b>%)<br>
+        Km pedalando: <b>${ax_pedalar.toFixed(1)}</b> (<b>${(ax_pedalar/ax_soma*100).toFixed(2)}</b>%)<br><br>
+        Km total: <b>${ax_soma.toFixed(1)}</b>`;
+
+        // atualização item f
+
+        foto_correr.style.width = 250*(ax_correr/ax_soma*100)/100 + 'px';
+        foto_nadar.style.width = 250*(ax_nadar/ax_soma*100)/100 + 'px';
+        foto_pedalar.style.width = 250*(ax_pedalar/ax_soma*100)/100 + 'px';
+
+        // verificação item e
+        if (ax_correr >= 10 && sel_modalidade.value == 'Correr') {
+            opt_correr.disabled = true;
+            sel_modalidade.value = '';
+        }
+
+        if (ax_nadar >= 10 && sel_modalidade.value == 'Nadar') {
+            opt_nadar.disabled = true;
+            sel_modalidade.value = '';
+        }
+        
+        if (ax_pedalar >= 10 && sel_modalidade.value == 'Pedalar') {
+            opt_pedalar.disabled = true;
+            sel_modalidade.value = '';
+        }
+
+        // if (ax_correr >= 10 && ax_nadar >= 10 && ax_pedalar >= 10) {
+        if (opt_correr.disabled == true && opt_nadar.disabled == true && opt_pedalar.disabled == true) {
+            alert('Parabéns triatlo concluído!!!')
+            resetar()
+        }
+    };
+
+    function resetar() {
+        opt_correr.disabled = false;
+        opt_nadar.disabled = false;
+        opt_pedalar.disabled = false;
+        div_placar.innerHTML = '';
+        ipt_idade.value = '';
+        ipt_nome.value = '';
+        ax_correr = 0;
+        ax_nadar = 0;
+        ax_pedalar = 0;
+        ax_randon_dist = 0;
+    }
+    
+    
+</script>

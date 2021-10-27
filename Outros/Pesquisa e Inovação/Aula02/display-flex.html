@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display flex</title>
+
+    <style>
+
+        /* bloco 1 de estilizações */
+        .div1 {
+            display: flex;  /* adicionando a renderização flexível nos elementos filhos dessa div */
+            flex-direction: row; /* colocando os elementos filhos com uma direção de 'linha' */
+            height: 100px; 
+            background-color: red;
+        }
+        .quadrado1 {
+            height: 30%;    /* ocupa 30% da altura do elemento pai */
+            width: 50%;     /* ocupa 50% da largura do elemento pai */
+            background-color: blue;
+        }
+        .quadrado2 {
+            height: 70%;    /* ocupa 70% da altura do elemento pai */
+            width: 50%;     /* ocupa 50% da largura do elemento pai */
+            background-color: green;
+        }
+
+
+        /* bloco 2 de estilizações */
+        .div2 {
+            margin-top: 25px; /* adicionando uma margem EXTERNA de 25 pixels no topo do elemento */
+            height: 100px;
+            background-color: yellow;
+            display: flex;  /* adicionando a renderização flexível nos elementos filhos dessa div */
+            flex-direction: row; /* colocando os elementos filhos com uma direção de 'linha' */
+            justify-content: center; /* JUSTIFICANDO o conteúdo da div onde vai aplicar o display flex no centro */
+            align-items: center; /* ALINHANDO os itens da div onde vai aplicar o display flex no centro */
+
+            /* 
+                Por padrão, o display flex vem com a direção (flex-direction) como 'linha' (row), onde os elementos
+                filhos ficam um ao lado do outro.
+                Podemos alterar a direção para 'coluna' (column), e assim, os itens ficam um embaixo do outro.
+
+
+                justify-content & align-items servem para que possamos alinhar e justificar o conteúdo (elementos filhos)
+                do elemento no qual estamos aplicando o 'display: flex'.
+
+                A propriedade 'flex-direction' influencia no comportamento das propriedades 'justify-content' e 'align-items'.
+                
+                Caso a direção do flex seja 'ROW' (linha), a propriedade 'justify-content' irá alinhar os itens verticalmente no elemento,
+                enquanto a propriedade 'align-items' irá alinhar os itens horizontalmente no elemento.
+
+                    +-------------+      (move todos os itens)
+                    + XXX         +  ->  justify-content: flex-start;
+                    +-------------+  
+
+                    +-------------+  
+                    +     XXX     +  ->  justify-content: center;
+                    +-------------+  
+                    
+                    +-------------+  
+                    +         XXX +  ->  justify-content: flex-end;
+                    +-------------+  
+
+                    +-------------+  
+                    + XXX         +     
+                    +             +  ->  align-items: flex-start;
+                    +             +     
+                    +-------------+  
+
+                    
+                    +-------------+  
+                    +             +     
+                    + XXX         +  ->  align-items: center;
+                    +             +     
+                    +-------------+  
+
+                    
+                    +-------------+  
+                    +             +     
+                    +             +  ->  align-items: flex-end;
+                    + XXX         +     
+                    +-------------+  
+                
+                Caso a direção do flex seja 'COLUMN' (coluna), a propriedade 'justify-content' irá alinhar os itens horizontalmente no elemento,
+                enquanto a propriedade 'align-items' irá alinhar os itens vertizalmente no elemento.
+
+                    +-------------+  
+                    + X           +     (move toda a coluna de elementos)
+                    + X           +  ->  align-items: flex-start;
+                    + X           +     
+                    +-------------+  
+
+                    
+                    +-------------+  
+                    +     X       +     
+                    +     X       +  ->  align-items: center;
+                    +     X       +     
+                    +-------------+  
+
+                    
+                    +-------------+  
+                    +           X +     
+                    +           X +  ->  align-items: flex-end;
+                    +           X +     
+                    +-------------+  
+                    
+
+                    +-------------+  
+                    + X           +     
+                    + X           +  ->  justify-content: flex-start;
+                    +             +     
+                    +-------------+  
+
+                    
+                    +-------------+  
+                    + X           +     
+                    + X           +  ->  justify-content: center;
+                    + X           +     
+                    +-------------+  
+
+                    
+                    +-------------+  
+                    +             +     
+                    + X           +  ->  justify-content: flex-end;
+                    + X           +     
+                    +-------------+  
+
+            */
+
+        }
+        .quadrado3 {
+            height: 25px;
+            width: 50px;
+            background-color: lightseagreen;
+        }
+        .quadrado4 {
+            height: 25px;
+            width: 50px;
+            background-color: hotpink;
+        }
+        
+        
+        /* bloco 3 de estilizações */
+        .div3 {
+            margin-top: 5vh;
+            display: flex;
+            height: 100px;
+            background-color: gray;
+            flex-direction: column;
+            justify-content: flex-end;  /*  */
+            align-items: center;
+        }
+        .quadrado5 {
+            height: 25px;
+            width: 50px;
+            background-color: white;
+        }
+        .quadrado6 {
+            height: 25px;
+            width: 50px;
+            background-color: black;
+        }
+        
+        
+        /* bloco 4 de estilizações */
+        .div4 {
+            margin-top: 10px;
+            display: flex;
+            height: 100px;
+            background-color: lightgreen;
+            flex-direction: column;
+            justify-content: flex-start;  /*  */
+            align-items: flex-end;
+        }
+        .quadrado7 {
+            height: 25px;
+            width: 50px;
+            background-color: pink;
+        }
+        .quadrado8 {
+            height: 25px;
+            width: 50px;
+            background-color: lightcyan;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+    <!-- por padrão, as tags têm o display 'INLINE', onde eles se mantém na mesma linha, como as tags B I U -->
+    <b>Eu</b> <i> sou o </i> <u> display INLINE</u>
+
+    <div class="div1">
+        <div class="quadrado2"></div>
+        <div class="quadrado1"></div>
+    </div>
+
+    <div class="div2">
+        <div class="quadrado3"></div>
+        <div class="quadrado4"></div>
+    </div>
+
+    <div class="div3">
+        <div class="quadrado5"></div>
+        <div class="quadrado6"></div>
+    </div>
+
+    <div class="div4">
+        <div class="quadrado7"></div>
+        <div class="quadrado8"></div>
+    </div>
+
+
+</body>
+</html>
