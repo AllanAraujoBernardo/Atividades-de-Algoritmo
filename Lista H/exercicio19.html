@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 19</title>
+</head>
+<body>
+    <h3>Trajetória até a Bandtec</h3>
+    Quantos ônibus você precisa pegar?
+    <input type="number" id="onibus">
+<br><br>
+    Quantos trens você precisa pegar?
+    <input type="number" id="trem">
+<br><br>
+    Quantos metrôs você precisa pegar?
+    <input type="number" id="metro">
+<br><br>
+    <button onclick="contar()">#Partiu Trajeto</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function contar() {
+        var ax_onibus = 1;
+        var ax_trem = 1;
+        var ax_metro = 1;
+        div_msg.innerHTML = '';
+
+        while (ax_onibus <= onibus.value) {
+            div_msg.innerHTML += `<b style="color: red;">Pegando o ${ax_onibus}º buzão</b>`;
+
+            if (ax_onibus == 2) {
+                    div_msg.innerHTML += ` <b>Começando a cansar</b>`;
+                } else if (ax_onibus >= 3) {
+                    div_msg.innerHTML += ` <b>Já cansado!</b>`;
+                }
+            
+            div_msg.innerHTML += `<br><br>`
+            ax_onibus++;
+        }
+
+        while (ax_trem <= trem.value) {
+            div_msg.innerHTML += `<b style="color: green;">Pegando o ${ax_trem}º trem</b>`;
+
+            if (ax_trem == 2) {
+                    div_msg.innerHTML += ` <b>Começando a cansar</b>`;
+                } else if (ax_trem >= 3) {
+                    div_msg.innerHTML += ` <b>Já cansado!</b>`;
+                }
+
+            div_msg.innerHTML += `<br><br>` 
+            ax_trem++;
+        }
+
+        while (ax_metro <= metro.value) {
+            div_msg.innerHTML += `<b style="color: blue;">Pegando o ${ax_metro}º metro</b>`;
+            
+            if (ax_metro == 2) {
+                    div_msg.innerHTML += ` <b>Começando a cansar</b>`;
+                } else if (ax_metro >= 3) {
+                    div_msg.innerHTML += ` <b>Já cansado!</b>`;
+                }
+                
+            div_msg.innerHTML += `<br><br>`
+            ax_metro++;
+        }
+
+    }
+</script>

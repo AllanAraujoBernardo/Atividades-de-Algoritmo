@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 14</title>
+</head>
+<body>
+    <h3>Fases da Vida</h3>
+    Entre com sua idade 
+    <input onkeyup="contar()" type="number" id="idade">
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function contar() {
+        var ax_idade = 0;
+        var ax_fase = '';
+        div_msg.innerHTML = '';
+
+        while (ax_idade <= idade.value) {
+            
+            if (ax_idade <= 4) {
+                ax_fase = 'Primeira Infância';
+            } else if (ax_idade <= 6) {
+                ax_fase = 'Pré-escolar';
+            } else if (ax_idade <= 10) {
+                ax_fase = 'Segunda Infância';
+            } else if (ax_idade <= 18) {
+                ax_fase = 'Adolescência';
+            } else if (ax_idade <= 50) {
+                ax_fase = 'Adulto';
+            } else if (ax_idade <= 100) {
+                ax_fase = 'Melhor Idade';
+            } else {
+                ax_fase = 'Matusalém';
+            }
+
+            div_msg.innerHTML += `${ax_idade} anos (${ax_fase})<br><br>`;    
+            
+            ax_idade++;
+        }
+    }
+</script>

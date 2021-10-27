@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 22</title>
+</head>
+<body>
+    <h3>Super Sorteador 3000</h3>
+
+<div id="tela1">
+    Entre com a quantidade de números que serão sorteados
+    <input type="number" id="total_sorteados">
+<br><br>
+    Entre com o fator da divisibilidade dos números sorteados
+    <input type="number" id="divisibilidade">
+<br><br>
+    <button onclick="validar()">Sortear</button>
+</div>
+
+<div id="tela2" style="display: none;">
+    <div id="div_msg"></div>
+<br><br>
+    <button onclick="resetar()">Voltar</button>
+</div>
+
+</body>
+</html>
+
+<script>
+    var lista_sorteados = [];
+
+    function validar() {
+        if (total_sorteados.value <= 10 || total_sorteados.value >= 50) {
+            alert ('Escolha uma quantidade números maior que 10 e menor que 50');
+        } else if (divisibilidade.value <= 1 || divisibilidade.value >= 10) {
+            alert ('Escolha um fator entre 1 e 10');
+        } else {
+            sortear()
+        }
+    };
+
+// funções de array aprendidas via w3schools
+
+    function sortear() {
+        tela1.style.display = 'none';
+        tela2.style.display = 'block';
+
+        var ax_contagem = 1;
+        div_msg.innerHTML = '';
+
+        var ax_soma = 0;
+
+        while (ax_contagem <= total_sorteados.value) {
+
+            var ax_sorteado = (Math.random()*100)+1;
+            var sorteado = ax_sorteado.toFixed()
+            
+            if (sorteado % divisibilidade.value == 0) {
+            div_msg.innerHTML += `<b style="color: red;">${sorteado}</b><br><br>`;
+            } else {
+            div_msg.innerHTML += `${sorteado}<br><br>`;
+            }
+
+            lista_sorteados[lista_sorteados.length] = sorteado;
+            ax_soma = ax_soma + ax_sorteado;
+
+            ax_contagem ++;
+
+        }
+
+        div_msg.innerHTML += `O maior número sorteado foi: ${Math.max.apply(null, lista_sorteados)}<br><br>O menor número sorteado foi: ${Math.min.apply(null, lista_sorteados)}<br><br>A média de todos os números sorteados foi: ${(ax_soma/lista_sorteados.length).toFixed(2)}`;
+    }
+
+    function resetar() {
+        div_msg.innerHTML = '';
+        lista_sorteados = [];
+        total_sorteados.value = '';
+        divisibilidade.value = '';
+
+        tela1.style.display = 'block';
+        tela2.style.display = 'none';
+    }
+</script>
