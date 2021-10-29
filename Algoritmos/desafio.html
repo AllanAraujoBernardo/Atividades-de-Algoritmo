@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio</title>
+</head>
+<body>
+    <h3>Turfe Amigo</h3>
+    Entre com o nome do primeiro cavalo
+    <input type="text" id="ipt_cavalo1" placeholder="Cavalo 1">
+<br><br>
+    Entre com o nome do segundo cavalo
+    <input type="text" id="ipt_cavalo2" placeholder="Cavalo 2">
+<br><br>
+    Entre com o nome do terceiro cavalo
+    <input type="text" id="ipt_cavalo3" placeholder="Cavalo 3">
+<br><br>
+    Entre com a quantidade de voltas que a corrida terá
+    <input type="number" id="ipt_total_voltas" placeholder="Quantidade de voltas">
+<br><br>
+    Entre com o tempo mínimo para execução da volta
+    <input type="text" id="ipt_tempo_min" placeholder="Tempo mínimo por volta">
+<br><br>
+    Entre com o tempo máximo para a execução da volta
+    <input type="text" id="ipt_tempo_max" placeholder="Tempo máximo por volta">
+<br><br>
+    <button onclick="validar()">Dar a largada</button>
+<br><br>
+    <div id="div_voltas"></div>
+<br><br>
+    <div id="div_podio"></div>
+</body>
+</html>
+
+<script>
+    function validar() {
+        if (ipt_cavalo1.value == '' || ipt_cavalo2.value == '' || ipt_cavalo3.value == '') {
+            alert('Preencha os nomes dos cavalos');
+        } else if (ipt_total_voltas.value == '') {
+            alert('Quantidade de voltas inválidas');
+        } else if (ipt_tempo_min.value == '' || ipt_tempo_max.value == '') {
+            alert('Declare corretamente os tempos Máximo e Mínimo por volta');
+        } else {
+            iniciar();
+        }
+    };
+
+    function iniciar() {
+        div_voltas.innerHTML = '';
+        div_podio.innerHTML = '';
+//somar os valores aleatórios
+        var ax_soma1 = 0;
+        var ax_soma2 = 0;
+        var ax_soma3 = 0;
+//armazenar valores aleatórios       
+        var ax_volta1 = 0;
+        var ax_volta2 = 0;
+        var ax_volta3 = 0;
+
+        for (var ax_contagem = 1; ax_contagem <= Number(ipt_total_voltas.value); ax_contagem++) {
+//gerar valores aleatório e atribuir às variáveis acima            
+            var ax_random1 = Math.random()*(Number(ipt_tempo_max.value) - Number(ipt_tempo_min.value)) + Number(ipt_tempo_min.value);
+            ax_volta1 = Number(ax_random1).toFixed(1);
+            ax_soma1 = ax_soma1 + Number(ax_random1);
+
+            var ax_random2 = Math.random()*(Number(ipt_tempo_max.value) - Number(ipt_tempo_min.value)) + Number(ipt_tempo_min.value);
+            ax_volta2 = Number(ax_random2).toFixed(1);
+            ax_soma2 = ax_soma2 + Number(ax_random2);
+
+            var ax_random3 = Math.random()*(Number(ipt_tempo_max.value) - Number(ipt_tempo_min.value)) + Number(ipt_tempo_min.value);
+            ax_volta3 = Number(ax_random3).toFixed(1);
+            ax_soma3 = ax_soma3 + Number(ax_random3);
+            
+            div_voltas.innerHTML += `<b><u>Volta ${ax_contagem}</u><br>${ipt_cavalo1.value} - ${ax_volta1} - ${ax_soma1.toFixed(1)} - ${ipt_cavalo2.value} - ${ax_volta2} - ${ax_soma2.toFixed(1)} - ${ipt_cavalo3.value} - ${ax_volta3} - ${ax_soma3.toFixed(1)}</b><br><br><br>`
+        };
+
+        if (ax_soma1 <= ax_soma2 && ax_soma1 <= ax_soma3) {
+            div_podio.innerHTML += `<b><u>Em 1º Lugar - ${ipt_cavalo1.value}</u></b><br>`
+        } else if (ax_soma2 <= ax_soma1 && ax_soma2 <= ax_soma3) {
+            div_podio.innerHTML += `<b><u>Em 1º Lugar - ${ipt_cavalo2.value}</u></b><br>`
+        } else if (ax_soma3 <= ax_soma1 && ax_soma3 <=ax_soma2) {
+            div_podio.innerHTML += `<b><u>Em 1º Lugar - ${ipt_cavalo3.value}</u></b><br>`
+        };
+
+        if ((ax_soma1 >= ax_soma2 && ax_soma1 <= ax_soma3) || (ax_soma1 >= ax_soma3 && ax_soma1 <= ax_soma2)) {
+            div_podio.innerHTML += `<b><u>Em 2º Lugar - ${ipt_cavalo1.value}</u></b><br>`
+        } else if ((ax_soma2 >= ax_soma1 && ax_soma2 <= ax_soma3) || (ax_soma2 >= ax_soma3 && ax_soma2 <= ax_soma1)) {
+            div_podio.innerHTML += `<b><u>Em 2º Lugar - ${ipt_cavalo2.value}</u></b><br>`
+        } else if ((ax_soma3 >= ax_soma1 && ax_soma3 <= ax_soma2) || (ax_soma3 >= ax_soma2 && ax_soma3 <= ax_soma1)) {
+            div_podio.innerHTML += `<b><u>Em 2º Lugar - ${ipt_cavalo3.value}</u></b><br>`
+        };
+
+        if (ax_soma1 >= ax_soma2 && ax_soma1 >= ax_soma3) {
+            div_podio.innerHTML += `<b><u>Em 3º Lugar - ${ipt_cavalo1.value}</u></b><br>`
+        } else if (ax_soma2 >= ax_soma1 && ax_soma2 >= ax_soma3) {
+            div_podio.innerHTML += `<b><u>Em 3º Lugar - ${ipt_cavalo2.value}</u></b><br>`
+        } else if (ax_soma3 >= ax_soma1 && ax_soma3 >= ax_soma2) {
+            div_podio.innerHTML += `<b><u>Em 3º Lugar - ${ipt_cavalo3.value}</u></b><br>`
+        };
+    }
+</script>

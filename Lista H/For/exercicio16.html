@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 16</title>
+</head>
+<body>
+    Informe a quantidade de depósitos efetuados
+    <input type="number" id="ipt_depositos" placeholder="Total de Depósitos">
+<br><br>
+    Informe o valor <u>padrão</u> de cada depósito
+    <input type="number" id="ipt_valor" placeholder="Valor dos depósitos">
+<br><br>
+    <button onclick="contar()">Acompanhar Grana</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function contar() {
+        var ax_meses = Number(ipt_depositos.value);
+        var soma = 0;
+
+        for (var ax_contagem = 1; ax_contagem <= ax_meses; ax_contagem++) {
+            soma = soma + Number(ipt_valor.value);
+
+            if (ax_contagem % 3 == 0) {
+                soma = soma + (soma*0.01);
+                div_msg.innerHTML += `${ax_contagem}º Mês: R$ ${soma.toFixed(2)} <img style="height: 15px;" src="https://cdn-icons-png.flaticon.com/512/148/148841.png"><br><br>`;    
+            } else {
+                div_msg.innerHTML += `${ax_contagem}º Mês: R$ ${soma.toFixed(2)}<br><br>`;
+            }
+        }
+        
+        div_msg.innerHTML += `Total guardado: R$ ${soma.toFixed(2)}`
+    }
+</script>
