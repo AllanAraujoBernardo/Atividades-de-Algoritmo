@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 01</title>
+</head>
+<body>
+    <h3>Sua fruta está na lista?</h3>
+    Digite o nome de uma fruta
+    <input type="text" id="ipt_fruta" placeholder="fruta para pesquisa">
+<br><br>
+    <button onclick="buscar()">Pesquisar</button>
+</body>
+</html>
+
+<script>
+    var vt_frutas = ['melancia','goiaba','uva','pera','kiwi','manga','graviola'];
+
+    function buscar() {
+        if (vt_frutas.indexOf(ipt_fruta.value) == -1) {
+            alert(`Não existe a fruta ${ipt_fruta.value} na lista`); 
+        } else {
+            alert(`A fruta ${ipt_fruta.value} existe na lista`); 
+        }
+    }
+</script>

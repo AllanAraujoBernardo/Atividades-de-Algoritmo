@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 02</title>
+</head>
+<body>
+    Entre com o destino da viagem
+    <input type="text" id="ipt_destino" placeholder="Destino">
+<br><br>
+    <button onclick="validar()">Adicionar</button>
+<br><br>
+    <button onclick="mostrar1()">Primeira Viagem</button>
+    <button onclick="mostrar3()">Terceira Viagem</button>
+    <button onclick="mostrarU()">Última Viagem</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    var vt_destinos = [];
+
+    function validar(){
+        if (ipt_destino.value == '') {
+            alert('Preencha o Destino');
+        } else {
+        adicionar();
+        }
+    }
+
+    function adicionar() {
+        vt_destinos.push(ipt_destino.value);
+        ipt_destino.value = '';
+    }
+
+    function mostrar1() {
+        if (vt_destinos[0] != undefined) {
+            div_msg.innerHTML = `${vt_destinos[0]}`;
+        } else {
+            div_msg.innerHTML = `Ainda não viajou`;
+        }
+    }
+
+    function mostrar3() {
+        if (vt_destinos[2] != undefined) {
+            div_msg.innerHTML = `${vt_destinos[2]}`;
+        } else {
+            div_msg.innerHTML = `Ainda não fez a 3ª viagem`;
+        }
+    }    
+    
+    function mostrarU() {
+        if (vt_destinos[vt_destinos.length-1] != undefined) {
+            div_msg.innerHTML = `${vt_destinos[vt_destinos.length-1]}`;
+        } else {
+            div_msg.innerHTML = `Ainda não viajou`;
+        }
+    }
+</script>

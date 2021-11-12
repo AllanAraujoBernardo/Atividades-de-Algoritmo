@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 08</title>
+</head>
+<body>
+    Entre com o nome dos alunos
+    <input type="text" id="ipt_aluno" placeholder="Aluno">
+<br><br>
+    <button onclick="validar()">Cadastrar</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    var vt_alunos = [];
+
+    function validar() {
+        if (ipt_aluno.value == '') {
+            alert('Preencha o campo Aluno') 
+        } else {
+            cadastrar();
+        }
+    }
+
+    function cadastrar() {
+        vt_alunos.push(ipt_aluno.value);
+        ipt_aluno.value = '';
+    
+        div_msg.innerHTML = '';
+
+        for (var contagem = vt_alunos.length-1; contagem >= 0; contagem--) {
+            div_msg.innerHTML += `${vt_alunos[contagem]}<br><br>`;
+        }
+    }
+</script>
