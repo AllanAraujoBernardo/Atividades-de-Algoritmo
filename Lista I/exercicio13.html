@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 13</title>
+</head>
+<body>
+    Indique o resultado: 
+    <select id="sel_resultado">
+        <option value="">Selecione um resultado</option>
+        <option value="Ganhou">Vitória</option>
+        <option value="Empatou">Empate</option>
+        <option value="Perdeu">Derrota</option>
+    </select>
+<br><br>
+    <button onclick="registrar()">Registrar Jogo</button>
+<br><br>
+    Indique qual jogo quer saber o resultado:
+    <input onkeyup="pesquisar()" type="text" id="ipt_jogo">
+<br><br>
+    <div id="div_msg"></div>
+<br><br>
+    <div id="div_pesquisa"></div>
+</body>
+</html>
+
+<script>
+    var lista_resultados = [];
+    var cont_v = 0;
+    var cont_e = 0;
+    var cont_d = 0;
+
+    function registrar() {
+        if (sel_resultado.value != '') {
+            lista_resultados.push(sel_resultado.value);
+        } else {
+            alert('selecione um resultado');
+        }
+
+        if (sel_resultado.value == 'Ganhou') {
+            cont_v++;
+        } else if (sel_resultado.value == 'Empatou') {
+            cont_e++;
+        } else if (sel_resultado.value == 'Perdeu') {
+            cont_d++;
+        }
+
+        var ax_pontos = Number(cont_v*3)+Number(cont_e);
+
+        div_msg.innerHTML = `O time teve: ${cont_v} vitórias, ${cont_e} empates e ${cont_d} derrotas.<br><br>Pontuação total: ${ax_pontos} pontos<br><br>Aproveitamento: ${(ax_pontos*100 / (lista_resultados.length*3)).toFixed(2)}`
+    }
+
+    function pesquisar(){
+        if (lista_resultados[ipt_jogo.value-1] == undefined){
+        div_pesquisa.innerHTML = `Não foi cadastrado um ${ipt_jogo.value}º jogo`;
+        } else {
+        div_pesquisa.innerHTML = `No jogo ${ipt_jogo.value}º jogo, o time ${lista_resultados[ipt_jogo.value-1]}`;
+        }
+    }
+</script>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;">A História de uma pizza</h1>
+        <div style="text-align: center;">
+            <button onclick="pizza_1()">Acabou de Chegar</button>
+            <button onclick="pizza_2()">Depois de 1 minuto</button>
+            <button onclick="pizza_3()">depois de 5 minutos</button>
+            <button onclick="pizza_4()">Depois de 15 minutos</button>
+        </div>
+        <div id="sit_pizza" style="text-align: center;"></div>
+    </body>
+</html>
+
+<script>
+    function pizza_1(){
+        sit_pizza.innerHTML = '<img src="pizza1.jpg" style="width: 200px;">';
+};
+    function pizza_2(){
+        sit_pizza.innerHTML = '<img src="pizza2.jpg" style="width: 200px;">';
+};
+    function pizza_3(){
+        sit_pizza.innerHTML = '<img src="pizza3.jpg" style="width: 200px;">';
+};
+    function pizza_4(){
+        sit_pizza.innerHTML = '<img src="pizza4.jpg" style="width: 200px;">';
+};
+</script>

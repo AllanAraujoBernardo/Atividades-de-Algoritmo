@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extrato Bancário</title>
+</head>
+<body>
+    <div id="tela1">
+        Seu nome:
+        <input type="text" id="ipt_nome">
+    <br><br>
+        Dígito do Banco:
+        <input type="text" id="ipt_banco">
+    <br><br>
+        Agência:
+        <input type="number" id="ipt_agencia">
+    <br><br>
+        Conta:
+        <input type="number" id="ipt_conta">
+    <br><br>
+        Dígito:
+        <input type="number" id="ipt_digito">
+    <br><br>
+    <button onclick="validar1()">Acessar Conta</button>
+    </div>
+
+    <div id="tela2" style="display: none;">
+        Operação: 
+        <select id="sel_operacao">
+            <option value="">Selecione uma operação</option>
+            <option value="Débito">Débito</option>
+            <option value="Crédito">Crédito</option>
+        </select>
+    <br><br>
+        Data da operação:
+        <input type="text" id="ipt_data" placeholder="00/00/00">
+    <br><br>
+        Valor movimentado:
+        <input type="number" id="ipt_valor">
+    <br><br>
+        <button onclick="validar2()">Extrato</button>
+        <button onclick="mudar()">Mudar a conta</button>
+    <br><br>
+        <div id="div_extrato"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    var ax_total = 0;
+
+    function validar1() {
+        if (ipt_nome.value.length < 3) {
+            alert('Insira um nome válido');
+        } else if (ipt_agencia.value <= 0 || ipt_agencia.value >= 999) {
+            alert('Agência Inválida');
+        } else if (ipt_conta.value <= 0 || ipt_conta.value >= 99999) {
+            alert('Conta Inválida');
+        } else if (ipt_digito.value != (ipt_conta.value % 11) % 10) {
+            alert('Dígito Inválido');
+        } else if (ipt_banco.value == '001' || ipt_banco.value == '102' || ipt_banco.value == '237' || ipt_banco.value == '341') {
+            logar()
+        } else {
+        alert('Banco inválido');
+        }
+    }
+
+    function logar() {
+        tela1.style.display = 'none';
+        tela2.style.display = 'block';
+    }
+
+    function validar2() {
+        if (sel_operacao.value == '') {
+            alert('Operação não selecionada');
+        } else if (ipt_data.value.length != 8) {
+            alert('Erro no formato da data');
+        } else if (ipt_valor.value <= 0) {
+            alert ('Valor da movimentação inválido');
+        } else {
+            extratar();
+        }
+    }
+
+    function extratar() {
+        if(sel_operacao.value == 'Débito') {
+            div_extrato.innerHTML += `${ipt_data.value} - Saldo inicial R$ ${ax_total.toFixed(2)} ${sel_operacao.value} R$ ${ipt_valor.value} - Saldo final = R$ ${(ax_total - Number(ipt_valor.value)).toFixed(2)}<br><br>`;
+            ax_total = ax_total - Number(ipt_valor.value);
+        } else {
+            div_extrato.innerHTML += `${ipt_data.value} - Saldo inicial R$ ${ax_total.toFixed(2)} ${sel_operacao.value} R$ ${ipt_valor.value} - Saldo final = R$ ${(ax_total + Number(ipt_valor.value)).toFixed(2)}<br><br>`;
+            ax_total = ax_total + Number(ipt_valor.value);
+        }
+    }
+
+    function mudar() {
+        div_extrato.innerHTML = '';
+        ax_total = 0;
+        sel_operacao.value = '';
+        ipt_data.value = '';
+        ipt_valor.value = '';
+        ipt_nome.value = '';
+        ipt_banco.value = '';
+        ipt_agencia.value = '';
+        ipt_conta.value = '';
+        ipt_digito.value = '';
+
+        tela1.style.display = 'block';
+        tela2.style.display = 'none';
+    }
+        </script>

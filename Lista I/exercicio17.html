@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 17</title>
+</head>
+<body>
+
+<div id="tela1">
+    <p style="font-size: 25px; color: red;">Análise de performance de Alunos - Registro</p>
+    <span style="color: red;">Entre com o Nome do Aluno:</span>
+    <input style="color: orange; border: 1px solid orange;" type="text" id="ipt_nome">
+<br><br>
+    <span style="color: red;">Entre com a Nota do Aluno:</span>    
+    <input style="color: orange; border: 1px solid orange;" type="number" id="ipt_nota">
+<br><br>
+    <button onclick="registrar()" style="margin-right: 50px; color: orange; border: 1px solid orange; background-color: white;">Resgistrar</button>
+    <button onclick="analisar()" style="color: orange; border: 1px solid orange;  background-color: white;">Analisar</button>
+<br><br><br>
+    <div id="div_lista"></div>
+</div>
+
+<div id="tela2" style="display: none;">
+    <p style="font-size: 25px; color: red;">Análise de performance de Alunos - Pesquisa</p>
+    <span style="color: red;">Entre com o Intervalo de Notas:</span>
+    <input style="color: orange; border: 1px solid orange; margin-right: 30px" type="number" id="ipt_min" placeholder="De">
+    <input style="color: orange; border: 1px solid orange;" type="number" id="ipt_max" placeholder="Até">
+<br><br>
+    <button onclick="pesquisar()" style="margin-right: 50px; color: orange; border: 1px solid orange; background-color: white;">Pesquisar</button>
+<br><br>
+    <div id="div_pesquisa"></div>
+<br><br>
+    <div id="div_resumo"></div>
+</div>
+
+</body>
+</html>
+
+<script>
+    var lista_nomes = [];
+    var lista_notas = [];
+    var maior_nota = 0;
+    var menor_nota = 999;
+    var soma_notas = 0;
+
+    function registrar(){
+        if (ipt_nome.value == ''){
+            alert('Preencha o campo Nome do Aluno');
+        } else if (ipt_nota.value < 0 || ipt_nota.value > 10 || ipt_nota.value == '') {
+            alert('A nota deve estar entre 0 e 10');
+        } else {
+            lista_nomes.push(ipt_nome.value);
+            lista_notas.push(Number(ipt_nota.value));
+
+            soma_notas = soma_notas + Number(ipt_nota.value);
+
+            if (maior_nota < ipt_nota.value){
+                maior_nota = Number(ipt_nota.value);
+            }
+
+            if (menor_nota > ipt_nota.value){
+                menor_nota = Number(ipt_nota.value);
+            }
+
+            ipt_nome.value = '';
+            ipt_nota.value = '';
+            alert('Aluno e nota cadastrados com sucesso');
+
+            div_lista.innerHTML = '';
+
+            for (var index = lista_nomes.length-1; index >= 0; index--) {
+                div_lista.innerHTML += `Nome: ${lista_nomes[index]}<br>Nota:${lista_notas[index]}<br><br>`;
+            }
+        }
+    }
+
+    function analisar(){
+        tela1.style.display = 'none';
+        tela2.style.display = 'block';
+        ipt_nome.value = '';
+        ipt_nota.value = '';
+        div_lista.innerHTML = '';
+    }
+
+    function pesquisar(){
+        if (ipt_min.value < 0 || ipt_min.value > 10 || ipt_max.value < 0 || ipt_max.value > 10) {
+            alert('Os valores devem estar entre 0 e 10');
+        } else if (ipt_min.value > ipt_max.value) {
+            alert('O valor inicial não pode ser maior que o valor final');
+        } else {
+            div_pesquisa.innerHTML = '';
+
+            var ax_alunos_intervalo = 0;
+
+            for (var index = 0; index <= lista_nomes.length-1; index++) {
+                if (lista_notas[index] >= ipt_min.value && lista_notas[index] <= ipt_max.value){
+                    div_pesquisa.innerHTML += `O aluno ${lista_nomes[index]} ficou com a nota ${lista_notas[index].toFixed(2)}<br>`;
+                    
+                    ax_alunos_intervalo++;
+                }
+            }
+
+            div_resumo.innerHTML = `<b style="color: cornflowerblue;">Total de alunos registrados: ${lista_nomes.length}<br><br>Total de alunos listados: ${ax_alunos_intervalo}<br><br>Maior Nota: ${maior_nota}<br><br>Menor Nota: ${menor_nota}<br><br>Média da Nota: ${(soma_notas/lista_notas.length).toFixed(2)}</b>`;
+        }
+    }
+</script>

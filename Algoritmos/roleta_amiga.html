@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roleta Amiga</title>
+</head>
+<body>
+    <h2>Roleta Amiga</h2>
+<br>
+    <div id="tela1">
+        Em qual número você vai apostar 
+        <input type ="number" id="ipt_numero">
+    <br><br>
+        Em qual cor você vai apostar 
+        <select id="sel_cor">
+            <option value="">Selecione uma cor</option>
+            <option value="Vermelha">Vermelho</option>
+            <option value="Amarela">Amarelo</option>
+            <option value="Verde">Verde</option>
+        </select>
+    <br><br>
+        Qual o valor da sua aposta por rodada 
+        <input type="number" id="ipt_aposta">
+    <br><br>
+        Quantas rodadas você quer participar
+        <input type="number" id="ipt_rodada">
+    <br><br>
+        <button onclick="validar()">Realizar Aposta</button>
+    </div>
+
+    <div id="tela2">
+        <div id="div_msg"></div>
+        <div id="div_resultado"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    var ax_bolso = 0;
+
+    function validar() {
+        if (ipt_numero.value < 1 || ipt_numero.value > 36 || ipt_numero.value % 1 != 0) {
+            alert('Aposte em um número entre 1 e 36');
+        } else if (sel_cor.value == '') {
+            alert('Selecione uma cor');
+        } else if (ipt_aposta.value < 1 || ipt_aposta.value > 100) {
+            alert('A aposta deve ser um valor entre 1 e 100');
+        } else if (ipt_rodada.value <= 0) {
+            alert('Insira um número de rodadas');
+        } else {
+            apostar()
+        }
+    }
+
+    function apostar() {
+        tela1.style.display = 'none';
+        tela2.style.display = 'block';
+
+        div_msg.innerHTML = `Sua aposta de R$ ${Number(ipt_aposta.value).toFixed(2)} por rodada foi no número ${Number(ipt_numero.value).toFixed()} e na cor ${sel_cor.value}<br><br><br>`;
+        
+        for (var ax_contador = 1; ax_contador <= Number(ipt_rodada.value); ax_contador++) {
+            
+            var ax_numero_random = Math.random() * 36;
+            var ax_numero_sorteado = ax_numero_random.toFixed(0)
+
+            var ax_cor_random = Math.random() * 300;
+            var ax_cor_sorteada = '';
+
+            if (ax_cor_random < 100) {
+                ax_cor_sorteada = 'Vermelha';
+            } else if (ax_cor_random < 200) {
+                ax_cor_sorteada = 'Amarela';
+            } else {
+                ax_cor_sorteada = 'Verde';
+            }
+
+            if (ax_cor_sorteada == sel_cor.value && ax_numero_sorteado == ipt_numero.value) {
+                ax_bolso = ax_bolso + (Number(ipt_aposta.value)*10);
+                div_msg.innerHTML += `${ax_contador}º sorteio - cor ${ax_cor_sorteada}, número ${ax_numero_random.toFixed(0)} - Parabéns!!! Você ganhou ${(Number(ipt_aposta.value)*10).toFixed(2)} seu saldo ficou em R$ ${ax_bolso.toFixed(2)}<br><br>`
+            } else if (ax_cor_sorteada == sel_cor.value) {
+                ax_bolso = ax_bolso + (Number(ipt_aposta.value)*0.2);
+                div_msg.innerHTML += `${ax_contador}º sorteio - cor ${ax_cor_sorteada}, número ${ax_numero_random.toFixed(0)} - Você ganhou ${(Number(ipt_aposta.value)*0.2).toFixed(2)} seu saldo ficou em R$ ${ax_bolso.toFixed(2)}<br><br>`
+            } else if (ax_numero_sorteado == ipt_numero.value) {
+                ax_bolso = ax_bolso + (Number(ipt_aposta.value)*3);
+                div_msg.innerHTML += `${ax_contador}º sorteio - cor ${ax_cor_sorteada}, número ${ax_numero_random.toFixed(0)} - Você ganhou ${(Number(ipt_aposta.value)*3).toFixed(2)} seu saldo ficou em R$ ${ax_bolso.toFixed(2)}<br><br>`
+            } else {
+                ax_bolso = ax_bolso - Number(ipt_aposta.value);
+                div_msg.innerHTML += `${ax_contador}º sorteio - cor ${ax_cor_sorteada}, número ${ax_numero_random.toFixed(0)} - Você perdeu ${(Number(ipt_aposta.value)).toFixed(2)} seu saldo ficou em R$ ${ax_bolso.toFixed(2)}<br><br>`
+            }
+        }
+
+        if (ax_bolso > 0) {
+            div_resultado.innerHTML = `<b>Parabéns você ganhou R$ ${ax_bolso.toFixed(2)}, retire seu dinheiro no caixa</b>`
+        } else if (ax_bolso < 0) {
+            div_resultado.innerHTML = `<b>Infelizmente hoje você não está com sorte, vá ao caixa e pague R$ ${ax_bolso.toFixed(2)}</b>`
+        } else {
+            div_resultado.innerHTML = `<b>Infelizmente hoje você não está com sorte, mas também não está com azar!!!</b>`
+        }
+    }
+</script>
