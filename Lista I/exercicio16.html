@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 16</title>
+</head>
+<body>
+    Digite um número qualquer: 
+    <input type="number" id="ipt_numero">
+<br><br>
+    <button onclick="analisar()">Analisar Histórico</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    var ax_maior = -99999999999;
+    var ax_menor = 99999999999;
+    var lista_numeros = [];
+
+    function analisar(){
+
+    if (ipt_numero.value == '') {
+        alert('Preencha o campo com um número válido');
+    } else {
+        lista_numeros.push(Number(ipt_numero.value));
+        
+        if(ax_maior < ipt_numero.value){
+            ax_maior = Number(ipt_numero.value);
+        }
+
+        if(ax_menor > ipt_numero.value){
+            ax_menor = Number(ipt_numero.value);
+        }
+        
+        ipt_numero.value = '';        
+        alert('Número cadastrado com sucesso');
+
+        div_msg.innerHTML = '';
+    
+        for(var index = 0; index <= lista_numeros.length-1; index++) {
+            div_msg.innerHTML += `<p><b>${index+1}º Número: ${lista_numeros[index]}</b></p>`;
+        }
+
+        div_msg.innerHTML += `<br><p><b>Maior: ${ax_maior}</b></p><p><b>Menor: ${ax_menor}</b></p>`;
+    }
+}
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 07</title>
+</head>
+<body>
+    Entre com o nome dos seus filmes favoritos: 
+    <input type="text" id="ipt_filme">
+<br><br>
+    <button onclick="cadastrar()">Cadastrar Filme</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    var lista_filmes = [];
+
+    function cadastrar(){
+        if (ipt_filme.value == '') {
+            alert('Preencha o campo filme');
+        } else {
+            lista_filmes.push(ipt_filme.value);
+            ipt_filme.value = '';
+            alert('Filme Cadastrado')
+
+            div_msg.innerHTML = '';
+
+            for (var index = 0; index <= lista_filmes.length-1; index++){
+                if(index % 2 == 1){
+                    div_msg.innerHTML += `<p style="color: blue;">${lista_filmes[index]}</p>`;
+                } else {
+                    div_msg.innerHTML += `<p style="color: red;">${lista_filmes[index]}</p>`;
+                }
+            }
+        }
+           
+        
+    }
+    
+</script>

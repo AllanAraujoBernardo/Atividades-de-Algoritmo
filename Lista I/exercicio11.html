@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 11</title>
+</head>
+<body>
+    Entre com o preço do produto:
+    <input type="number" id="ipt_preco" placeholder="Preço">
+<br><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="atualizar()">Atualizar Estoque</button>
+<br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    var lista_precos = [];
+    var ax_total = 0;
+
+    function cadastrar(){
+        if (ipt_preco.value == '') {
+            alert('Preencha o campo Preço');
+        } else {
+            lista_precos.push(Number(ipt_preco.value));
+            ax_total = ax_total + Number(ipt_preco.value);
+            ipt_preco.value = '';
+            alert('Cadastro realizado');
+        }
+    }
+
+    function atualizar(){
+        div_msg.innerHTML = `<p><b>Você tem ${lista_precos.length} produtos cadastrados em estoque</p>Seu estoque vale R$ ${ax_total.toFixed(2)}</b>`
+    }
+</script>
